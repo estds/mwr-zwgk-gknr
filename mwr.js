@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         屏蔽MWR政务公开滚动条
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  去除没有必要的滚动条，添加打印样式便于打印。
 // @match        http://www.mwr.gov.cn/zwgk/gknr*
 // @match        https://www.mwr.gov.cn/zwgk/gknr*
 // @grant        none
 // @require      https://code.jquery.com/jquery-3.6.0.min.js
+// @require      http://www.mwr.gov.cn/zwgk/js/jquery.mCustomScrollbar.concat.min.js
 // ==/UserScript==
 
 (function() {
@@ -16,9 +17,9 @@
     function destroyScrollbar() {
         if (typeof $ !== 'undefined' && $.fn.mCustomScrollbar) {
             $(".scroll").mCustomScrollbar('destroy');
-            //console.log('Destroyed mCustomScrollbar on .scroll elements');
+            console.log('Destroyed mCustomScrollbar on .scroll elements');
         } else {
-            //console.log('jQuery or mCustomScrollbar not available');
+            console.log('jQuery or mCustomScrollbar not available');
         }
     }
 
@@ -28,7 +29,7 @@
         elementsToModify.forEach(element => {
             element.style.setProperty('height', 'auto', 'important');
         });
-        //console.log('Modified .roll and .gknb elements');
+        console.log('Modified .roll and .gknb elements');
     }
 
     // Function to add print styles
